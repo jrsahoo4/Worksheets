@@ -1,0 +1,76 @@
+1.Write SQL query to create table Customers.
+
+mysql> create table customers(
+    -> customerNumber int,
+    -> CustomerName varchar(20),
+    -> CustomerLastName varchar(10),
+    -> CustomerFirstName varchar(10),
+    -> phone int,
+    -> addressline1 char(100),
+    -> addressline2 char(100),
+    -> city char(20),
+    -> state char(20),
+    -> postalcode int,
+    -> country char(20),
+    -> salesRepEmployeeNumber int unique,
+    -> creditLimit int);
+
+2. Write SQL query to create table Orders
+
+mysql> create table orders(
+    -> orderNumber int,
+    -> orderDate int,
+    -> requireDate int,
+    -> shippedDate int,
+    -> status char(10),
+    -> comments char(100),
+    -> customerNumber int);
+
+3. Write SQL query to show all the columns data from the Orders Table
+
+mysql> select * from orders;
+
+4. Write SQL query to show all the comments from the Orders Table
+
+mysql> select comments from orders;
+
+5. Write a SQL query to show orderDate and Total number of orders placed on that date, from Orders table.
+
+mysql> select count(orderNumber),orderDate from orders group by orderDate;
+
+6. Write a SQL query to show employeNumber, lastName, firstName of all the employees from employees table.
+
+mysql> create table employees(
+    -> employeeNumber int,
+    -> lastName Varchar(20),
+    -> firstName varchar(10),
+    -> extension int,
+    -> email varchar(30) unique,
+    -> officeCode int,
+    -> reportsTo varchar(30),
+    -> jobTitile varchar(30));
+
+mysql> select employeeNumber,lastName,firstName from employees;
+
+7. Write a SQL query to show all orderNumber, customerName of the person who placed the respective order.
+
+mysql> select orderNumber,customerName
+    -> from orders,customers
+    -> where orders.customerNumber= customers.customerNumber;
+
+8. Write a SQL query to show name of all the customers in one column and salerepemployee name in another
+column.
+
+mysql> select orderNumber,customerName
+    -> from orders,customers
+    -> where orders.customerNumber= customers.customerNumber;
+
+9. Write a SQL query to show Date in one column and total payment amount of the payments made on that date
+from the payments table.
+
+mysql> select sum(amount),paymentDate from payments group by paymentDate;
+
+10. Write a SQL query to show all the products productName, MSRP, productDescription from the products table
+
+mysql> select productName,MSRP,productDescription from products
+
